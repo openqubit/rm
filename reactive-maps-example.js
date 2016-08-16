@@ -37,9 +37,15 @@ if (Meteor.isClient) {
     });
   });
 
-  Meteor.startup(function() {
-    GoogleMaps.load();
+ if (Meteor.isClient) {
+  //var MAP_ZOOM = 15;
+
+ Meteor.startup(function() {  
+  GoogleMaps.load({
+    key: 'AIzaSyD81kt-LoD3_Vqyqhd1yw9YlHq8J3SHpEg'
   });
+});
+}
 
   Template.map.helpers({
     mapOptions: function() {
