@@ -3,6 +3,7 @@ Markers = new Mongo.Collection('markers');
 if (Meteor.isClient) {
   Template.map.onCreated(function() {
     GoogleMaps.ready('map', function(map) {
+      google.maps.event.trigger(map, "resize");
       google.maps.event.addListener(map.instance, 'click', function(event) {
         Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
       });
@@ -50,7 +51,6 @@ if (Meteor.isClient) {
   Template.map.helpers({
     mapOptions: function() {
       if (GoogleMaps.loaded()) {
-        google.maps.event.trigger(map, "resize");
         return {
           center: new google.maps.LatLng(-37.8136, 144.9631),
           zoom: 8
