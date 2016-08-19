@@ -2,15 +2,17 @@ Markers = new Mongo.Collection('markers');
 
 if (Meteor.isClient) {
   Template.map.onCreated(function() {
+    
     GoogleMaps.ready('map', function(map) {
+      
+      $(window).resize(function() {
+    google.maps.event.trigger(map, 'resize');
+    });
       
       google.maps.event.addListener(map.instance, 'click', function(event) {
         Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
       });
-     google.maps.event.addListener(map.instance, 'drag', function(){
-       alert('drag happened');
-    google.maps.event.trigger(map, "resize");
-     });
+    
       var markers = {};
 
       Markers.find().observe({
