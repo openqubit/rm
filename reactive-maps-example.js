@@ -7,7 +7,8 @@ if (Meteor.isClient) {
       google.maps.event.addListener(map.instance, 'click', function(event) {
         Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
       });
-     google.maps.event.addListener(Map, 'drag', function(){
+     google.maps.event.addListener(map.instance, 'drag', function(){
+       alert('drag happened');
     google.maps.event.trigger(map, "resize");
      });
       var markers = {};
