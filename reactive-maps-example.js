@@ -1,16 +1,58 @@
-Markers = new Mongo.Collection('markers');
-
+/*****************************************************************************/
+/* Home: Event Handlers */
+/*****************************************************************************/
 if (Meteor.isClient) {
-  Template.map.onCreated(function() {
-    
+  var MAP_ZOOM = 15;
+
+ Meteor.startup(function() {  
+  GoogleMaps.load({
+    key: 'AIzaSyD81kt-LoD3_Vqyqhd1yw9YlHq8J3SHpEg'
+  });
+});
+}
+
+Template.NotFound.events({
+'click #logout': function(){
+  Meteor.logout();
+    document.location.reload(true);
+}	
+});
+
+/*****************************************************************************/
+/* Home: Helpers */
+/*****************************************************************************/
+Template.NotFound.helpers({
+geolocationError: function() {
+    var error = Geolocation.error();
+    return error && error.message;
+  },
+  mapOptions: function() {
+    var latLng = Geolocation.latLng();
+    // Initialize the map once we have the latLng.
+    if (GoogleMaps.loaded() && latLng) {
+      return {
+        center: new google.maps.LatLng(latLng.lat, latLng.lng),
+        zoom: MAP_ZOOM
+      };
+    }
+  },
+  map2Options: function() {
+      if (GoogleMaps.loaded()) {
+        return {
+          center: new google.maps.LatLng(-37.8136, 144.9631),
+          zoom: 8
+        };
+      }
+    }
+});
+
+/*****************************************************************************/
+/* Home: Lifecycle Hooks */
+/*****************************************************************************/
+Template.NotFound.onCreated(function () {
+  
     GoogleMaps.ready('map', function(map) {
-      
-    $(window).resize(function() {
-        google.maps.event.trigger(map, 'resize');
-    });
-    google.maps.event.trigger(map, 'resize');
-    
-      
+
       google.maps.event.addListener(map.instance, 'click', function(event) {
         Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
       });
@@ -43,26 +85,69 @@ if (Meteor.isClient) {
         }
       });
     });
-  });
-
- if (Meteor.isClient) {
-  //var MAP_ZOOM = 15;
-
- Meteor.startup(function() {  
-  GoogleMaps.load({
-    key: 'AIzaSyD81kt-LoD3_Vqyqhd1yw9YlHq8J3SHpEg'
-  });
 });
-}
-
-  Template.map.helpers({
-    mapOptions: function() {
-      if (GoogleMaps.loaded()) {
-        return {
-          center: new google.maps.LatLng(-37.8136, 144.9631),
-          zoom: 8
-        };
+Template.NotFound.onRendered(function () {
+var myApp = new Framework7();
+ 
+var $$ = Dom7;
+ 
+  myApp.modal({
+    title:  'GeoCanada Login Service',
+    text: 'Login With Any Of The Methods Provided',
+    verticalButtons: true,
+    buttons: [
+      {
+      	title: 'Google',
+        text: '<i class="fa fa-google" aria-hidden="true"> Google</i>',
+        onClick: function() {
+          Meteor.loginWithGoogle({
+        requestPermissions: ['email']
+       }, function(error) {
+      if (error) {
+    console.log(error); //If there is any error, will get error here
+    document.location.reload(true);
+     }else{
+    console.log(Meteor.user());// If there is successful login, you will get login details here
+     }
+     });
+        }
+      },
+      {
+      	title: 'Facebook',
+        text: '<i class="fa fa-facebook-official" aria-hidden="true"> Facebook</i>',
+        onClick: function() {
+           Meteor.loginWithFacebook({
+        requestPermissions: ['email']
+       }, function(error) {
+      if (error) {
+    console.log(error); //If there is any error, will get error here
+    document.location.reload(true);
+     }else{
+    console.log(Meteor.user());// If there is successful login, you will get login details here
+     }
+     });
+        }
+      },
+      {
+      	title: 'Twitter',
+        text: '<i class="fa fa-twitter-square" aria-hidden="true"> Twitter</i>',
+        onClick: function() {
+          Meteor.loginWithTwitter({
+        requestPermissions: ['email']
+       }, function(error) {
+      if (error) {
+    console.log(error); //If there is any error, will get error here
+    document.location.reload(true);
+     }else{
+    console.log(Meteor.user());// If there is successful login, you will get login details here
+     }
+     });
+        }
       }
-    }
-  });
-}
+    ]
+  })
+
+});
+
+Template.NotFound.onDestroyed(function () {
+});
