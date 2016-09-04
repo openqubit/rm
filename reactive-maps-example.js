@@ -3,14 +3,9 @@ Markers = new Mongo.Collection('markers');
 if (Meteor.isClient) {
   
    Template.lenav.events({
-  'click .kr': function (event) {
+  'click .kr': function (event,template) {
    event.preventDefault();
-  }
-   });
-
-  Template.map.onCreated(function() {
-   
-    GoogleMaps.ready('map', function(map) {
+       GoogleMaps.ready('map', function(map) {
       google.maps.event.addListener(map.instance, 'click', function(event) {
         Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
       });
@@ -44,6 +39,12 @@ map.instance.setZoom(6);
         }
       });
     });
+  }
+   });
+
+  Template.map.onCreated(function() {
+   
+
   });
 
  if (Meteor.isClient) {
