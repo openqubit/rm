@@ -5,11 +5,7 @@ if (Meteor.isClient) {
    Template.lenav.events({
   'click .kr': function (event) {
    event.preventDefault();
-   $(window).resize(function() {
-    var width = $(window).width() - 1; 
-    $(".dashboard-menu").width(width);
-  });
-  $(window).trigger('resize');
+  window.resizeBy(-2, -2);
   }
    });
 
