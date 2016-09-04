@@ -5,8 +5,11 @@ if (Meteor.isClient) {
    Template.lenav.events({
   'click .kr': function (event) {
    event.preventDefault();
-    alert('hi');
-    console.log('hi');
+   $(window).resize(function() {
+    var width = $(window).width() - 1; 
+    $(".dashboard-menu").width(width);
+  });
+  $(window).trigger('resize');
   }
    });
 
@@ -72,11 +75,7 @@ if (Meteor.isClient) {
  
 
 Template.map.onRendered(function() {
-   $(window).resize(function() {
-    var width = $(window).width() - 1; 
-    $(".dashboard-menu").width(width);
-  });
-  $(window).trigger('resize');
+   
 });
 }
 
