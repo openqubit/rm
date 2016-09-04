@@ -62,7 +62,7 @@ if (Meteor.isClient) {
   
   Template.map.events({
   'click #kreate': function (event, template) {
-    event.preventDefault();
+    //event.preventDefault();
     alert('hi');
   }
 });
