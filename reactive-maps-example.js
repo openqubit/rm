@@ -11,13 +11,12 @@ if (Meteor.isClient) {
   Template.map.onCreated(function() {
    
     GoogleMaps.ready('map', function(map) {
-     google.maps.event.trigger(map.instance, "resize");
       google.maps.event.addListener(map.instance, 'click', function(event) {
         Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
       });
     
       var markers = {};
-
+     google.maps.event.trigger(map.instance, "resize");
       Markers.find().observe({
         added: function (document) {
           var marker = new google.maps.Marker({
