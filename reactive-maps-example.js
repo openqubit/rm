@@ -2,7 +2,8 @@ Markers = new Mongo.Collection('markers');
 
 if (Meteor.isClient) {
   Template.map.onCreated(function() {
-    
+    var width = $(window).width() - 1; 
+    $(".dashboard-menu").width(width);
     GoogleMaps.ready('map', function(map) {
 
       google.maps.event.addListener(map.instance, 'click', function(event) {
@@ -60,12 +61,6 @@ if (Meteor.isClient) {
     }
   });
   
-Template.map.onRendered(function() {
-$(window).resize(function() {
-google.maps.event.trigger(map, 'resize');
-});
-google.maps.event.trigger(map, 'resize');
-});
 
 }
 
