@@ -62,7 +62,6 @@ if (Meteor.isClient) {
   
   Template.map.events({
   'click #kr': function (event, template) {
-    event.preventDefault();
     alert('hi');
     console.log('hi');
   }
