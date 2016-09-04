@@ -59,6 +59,14 @@ if (Meteor.isClient) {
       }
     }
   });
+  
+Template.map.onRendered(function() {
+$(window).resize(function() {
+google.maps.event.trigger(map, 'resize');
+});
+google.maps.event.trigger(map, 'resize');
+});
+
 }
 
 
