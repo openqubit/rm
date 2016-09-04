@@ -60,6 +60,13 @@ if (Meteor.isClient) {
     }
   });
   
+  Template.map.events({
+  'click #kreate': function (event) {
+    event.preventDefault();
+    alert('hi');
+  }
+});
+
 Template.map.onRendered(function() {
    $(window).resize(function() {
     var width = $(window).width() - 1; 
