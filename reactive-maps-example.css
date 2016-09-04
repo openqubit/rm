@@ -1,11 +1,10 @@
 
 html, body, .map-container {
-
+        width: 100% !important;
+    height: 100% !important;
     margin: 0;
     padding: 0;
 }
 .map-container {
-        width: 100% !important;
-    height: 100% !important;
     position: relative;
 }
