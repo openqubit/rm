@@ -14,7 +14,8 @@ if (Meteor.isClient) {
       google.maps.event.addListener(map.instance, 'click', function(event) {
         Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
       });
-    
+    google.maps.event.trigger(map.instance,'resize');
+map.instance.setZoom(6);
       var markers = {};
      google.maps.event.trigger(map.instance, "resize");
       Markers.find().observe({
