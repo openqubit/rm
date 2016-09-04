@@ -8,7 +8,7 @@ if (Meteor.isClient) {
     alert('hi');
     console.log('hi');
   }
-});
+   });
 
   Template.map.onCreated(function() {
    
