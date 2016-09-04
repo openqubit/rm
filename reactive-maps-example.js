@@ -5,14 +5,13 @@ if (Meteor.isClient) {
    Template.lenav.events({
   'click .kr': function (event) {
    event.preventDefault();
-  window.resizeBy(-2, -2);
   }
    });
 
   Template.map.onCreated(function() {
    
     GoogleMaps.ready('map', function(map) {
-     google.maps.event.trigger(map, "resize");
+     google.maps.event.trigger(map.instance, "resize");
       google.maps.event.addListener(map.instance, 'click', function(event) {
         Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
       });
