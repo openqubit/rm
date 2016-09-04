@@ -3,7 +3,7 @@ Markers = new Mongo.Collection('markers');
 if (Meteor.isClient) {
   
    Template.map.events({
-  'click': function (event) {
+  'click .kr': function (event) {
    event.preventDefault();
     alert('hi');
     console.log('hi');
