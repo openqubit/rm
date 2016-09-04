@@ -313,16 +313,6 @@
           <div data-page="index-6" class="page">
             <div class="page-content">
               <div class="content-block">
-              {{#if ex}}
-                {{> quickForm collection="Af" doc=cdoc id="updateSettings" omitFields="userid,paywallstatus,payment_start_of_validity,payment_end_of_validity"
-                class="settings" type="update" buttonContent="Update Settings"}}
-
-                {{else}}
-
-                 {{> quickForm collection="Af" doc=this id="updateSettings" omitFields="userid,paywallstatus,payment_start_of_validity,payment_end_of_validity" 
-                class="settings" type="insert" buttonContent="Insert Settings"}}
-
-                {{/if}}
 
               </div>
              
@@ -1068,16 +1058,6 @@
           <div data-page="index-23" class="page">
             <div class="page-content">
               <div class="content-block">
-              {{#if pc}}
-                {{> quickForm collection="Pc" doc=discovery id="updateDiscovery" omitFields="userid"
-                class="settings" type="update" buttonContent="Update Discovery Settings"}}
-
-                {{else}}
-
-                 {{> quickForm collection="Pc" doc=this id="insertDiscovery" omitFields="userid" 
-                class="settings" type="insert" buttonContent="Insert Discovery Settings"}}
-
-                {{/if}}
 
               </div>
             
@@ -1106,19 +1086,12 @@
           <div data-page="index-24" class="page">
             <div class="page-content">
               <div class="content-block">
-                {{> quickForm collection="Ft" doc=this id="insertjob" omitFields="dateposted,ipaddress,timezone,region,city,employerid,country,longitude,latitude"
-                class="postjob" type="insert" buttonContent="Create Job"}}
               </div>
               
             </div>
           </div>
         </div>
       </div>
-
-
-
-
-
 
         <div id="view-26" class="view tab">
         <!-- We can make with view with navigation, let's add Top Navbar-->
