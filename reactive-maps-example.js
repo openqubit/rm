@@ -2,8 +2,13 @@ Markers = new Mongo.Collection('markers');
 
 if (Meteor.isClient) {
   Template.map.onCreated(function() {
+    $(window).resize(function() {
     var width = $(window).width() - 1; 
     $(".dashboard-menu").width(width);
+  });
+
+  $(window).trigger('resize');
+
     GoogleMaps.ready('map', function(map) {
 
       google.maps.event.addListener(map.instance, 'click', function(event) {
