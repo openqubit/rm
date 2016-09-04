@@ -64,6 +64,7 @@ if (Meteor.isClient) {
   'click #kr': function (event, template) {
     event.preventDefault();
     alert('hi');
+    console.log('hi');
   }
 });
 
