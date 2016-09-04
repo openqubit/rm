@@ -8,7 +8,4 @@ html, body, .map-container {
 .map-container {
     position: relative;
 }
-.map-canvas{
-         width: 500px !important;
-    height: 500px !important;       
-}
+
