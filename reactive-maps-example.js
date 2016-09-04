@@ -1,6 +1,15 @@
 Markers = new Mongo.Collection('markers');
 
 if (Meteor.isClient) {
+  
+   Template.map.events({
+  'click #kr': function (event) {
+   event.preventDefault();
+    alert('hi');
+    console.log('hi');
+  }
+});
+
   Template.map.onCreated(function() {
    
     GoogleMaps.ready('map', function(map) {
@@ -60,12 +69,7 @@ if (Meteor.isClient) {
     }
   });
   
-  Template.map.events({
-  'click #kr': function (event, template) {
-    alert('hi');
-    console.log('hi');
-  }
-});
+ 
 
 Template.map.onRendered(function() {
    $(window).resize(function() {
