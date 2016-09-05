@@ -1,5 +1,11 @@
 Markers = new Mongo.Collection('markers');
 
+if(Meteor.isClient) {
+    Router.route('/',function(){
+        alert('landing page is loaded');
+    });
+}
+
 if (Meteor.isClient) {
   
    Template.lenav.events({
