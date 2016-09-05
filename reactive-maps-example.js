@@ -5,6 +5,7 @@ if (Meteor.isClient) {
    Template.lenav.events({
   'click .kr': function (event,template) {
    event.preventDefault();
+   var remoteframe = document.getElementById("github");
    alert('hello');
   }
    });
