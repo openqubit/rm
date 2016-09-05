@@ -2,7 +2,7 @@ Markers = new Mongo.Collection('markers');
 
 if(Meteor.isClient) {
     Router.route('/',function(){
-        alert('landing page is loaded');
+        console.log('landing page is loaded');
     });
 }
 
