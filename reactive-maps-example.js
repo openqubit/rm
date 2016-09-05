@@ -10,11 +10,6 @@ if (Meteor.isClient) {
    });
 
   Template.map.onCreated(function() {
-   var url = (window.location != window.parent.location)
-            ? document.referrer
-            : document.location;
-  parent.location.hash = "hello";
-
 
   });
 
