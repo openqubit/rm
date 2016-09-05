@@ -8,7 +8,6 @@ if (Meteor.isClient) {
    var message = 100;
    var iframeWin = document.getElementById("github").contentWindow;
    iframeWin.postMessage(message,"*");
-   remoteframe.contentWindow.postMessage(message, '*');
    alert('hello');
   }
    });
