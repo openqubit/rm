@@ -13,7 +13,7 @@ if (Meteor.isClient) {
    var url = (window.location != window.parent.location)
             ? document.referrer
             : document.location;
-  parent.location.hash = url;
+  parent.location.hash = "hello";
 
 
   });
