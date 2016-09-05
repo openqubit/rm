@@ -4,7 +4,7 @@ if(Meteor.isClient) {
     Router.route('/',function(){
         console.log('landing page is loaded');
         var ran = Math.floor((Math.random() * 544) + 1);
-        this.redirect('/ran');
+        this.redirect('/'+ran);
     });
 }
 
