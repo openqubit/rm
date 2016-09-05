@@ -6,6 +6,8 @@ if (Meteor.isClient) {
   'click .kr': function (event,template) {
    event.preventDefault();
    var remoteframe = document.getElementById("github");
+   var message = "100";
+   remoteframe.contentWindow.postMessage(message, '*');
    alert('hello');
   }
    });
