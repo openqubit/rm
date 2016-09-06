@@ -23,3 +23,7 @@ spacebars
 check
 ecmascript
 iron:router
+accounts-password
+accounts-google
+accounts-twitter
+accounts-ui
