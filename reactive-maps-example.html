@@ -91,18 +91,7 @@
                             </div>
                         </a>
                     </li>
-                     <li id="logout">
-                        <a href="#"  class="tab-link item-link close-panel item-content">
-                            <div class="item-media">
-                                <i class="fa fa-power-off"></i>
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-title"><span>Logout</span></div>
-                                <div class="item-after">
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                    {{> logout}}
                 </ul>
             </nav>
         </div>
@@ -1323,4 +1312,19 @@
   <div class="map-container">
     {{> googleMap name="map" options=mapOptions}}
   </div>
+</template>
+
+<template name="logout">
+                     <li id="logout">
+                        <a href="#"  class="tab-link item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-power-off"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title"><span>Logout</span></div>
+                                <div class="item-after">
+                                </div>
+                            </div>
+                        </a>
+                    </li>
 </template>
