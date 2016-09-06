@@ -15,11 +15,11 @@ if (Meteor.isClient) {
 }	
 });
 
-  Template.map.onCreated(function() {
+  Template.logout.onCreated(function() {
 
   });
 
-Template.NotFound.onRendered(function () {
+Template.logout.onRendered(function () {
 var myApp = new Framework7();
  
 var $$ = Dom7;
