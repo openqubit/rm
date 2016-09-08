@@ -1,8 +1,6 @@
 
-
-if (Meteor.isClient) {
-  
-  Meteor.startup(function() {  
+if(Meteor.isServer){
+    Meteor.startup(function() {  
   Accounts.loginServiceConfiguration.remove({
   service: "facebook"
 });
@@ -32,6 +30,8 @@ Accounts.loginServiceConfiguration.insert({
   secret: "gDZUPq6XfLMC-RqjkbOT1jov"
 });
   });
+}
+if (Meteor.isClient) {
   
    Template.lenav.events({
   'click .kr': function (event,template) {
