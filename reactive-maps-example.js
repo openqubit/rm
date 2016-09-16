@@ -36,7 +36,15 @@ if (Meteor.isClient) {
    Template.lenav.events({
   'click .kr': function (event,template) {
    event.preventDefault();
-   alert('hello');
+  
+    Meteor.call("getFriendsData", function(error, friends) {
+        if (error) {
+            console.log(error);
+        } else {
+            Session.set('friends', friends);
+        }
+    });
+    console.log(Session.get('friends'));
   }
    });
  Template.logout.events({
@@ -114,3 +122,13 @@ var $$ = Dom7;
 });
 }
 
+Meteor.methods({
+getFriendsData: function() {
+   Meteor.npmRequire('fbgraph');
+   console.log(Meteor.user().services.facebook.accessToken);
+   var fb = new Facebook(Meteor.user().services.facebook.accessToken);
+   var data = fb.getFriendsData();
+   console.log(data);
+   return data;
+}
+});
