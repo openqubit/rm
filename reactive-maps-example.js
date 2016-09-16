@@ -37,7 +37,7 @@ if (Meteor.isClient) {
   'click .kr': function (event,template) {
    event.preventDefault();
   
-    Meteor.call("getFriendsData", function(error, friends) {
+    Meteor.call('getFriendsData', function(error, friends) {
         if (error) {
             console.log(error);
         } else {
