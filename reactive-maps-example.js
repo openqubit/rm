@@ -43,10 +43,10 @@ if (Meteor.isClient) {
     console.log('lenav');
   }
    });
-    Template.lenav.helpers({
-allusers: function() {
+    Template.au.helpers({
+    allusers: function() {
     return Meteor.users.find();
-  }
+   }
    });
  Template.logout.events({
 'click #logout': function(){
