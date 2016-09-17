@@ -62,7 +62,9 @@ if (Meteor.isClient) {
     Template.au.events({
   'click .btn': function (event,template) {
    event.preventDefault();
-    alert(event.target.id);
+   var friendid = event.target.id;
+   var userid = Meteor.userId();
+   Friends.insert({userid:userid,friendid:friendid});
   }
    });
    Template.registerHelper('equals', function (a, b) {
@@ -74,8 +76,6 @@ if (Meteor.isClient) {
     return Meteor.users.find();
    },
  isFriend: function() {
-     
- Meteor.subscribe("friends");
  var userid = event.target.id;
  var cuserid = Meteor.userId();
  
