@@ -1,7 +1,8 @@
-
-if(Meteor.isServer){
     Friends = new Meteor.Collection('friends');
     Requests = new Meteor.Collection('requests');
+    
+if(Meteor.isServer){
+
     Meteor.publish("friends", function () {
            return Friends.find();
     });
