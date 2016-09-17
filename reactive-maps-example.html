@@ -1212,16 +1212,14 @@
             </tr>
         </thead>
         <tbody>
+         {{#ech allusers}}
             <tr>
-                <td>1</td>
+                <td>{{profile.name}}</td>
                 <td>
-                 {{#with allusers}}
-    {{#with profile}}
-        {{name}}
-    {{/with}}
-{{/with}}
-</td>
+                {{_id}}
+                </td>
             </tr>
+            {{/each}}
         </tbody>
     </table>
 
