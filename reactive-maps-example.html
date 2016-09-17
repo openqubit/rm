@@ -1205,26 +1205,6 @@
             <div class="page-content">
               <div class="content-block">
                {{> au }}
-               <template name="au">
-               <table class="table">
-        <thead>
-            <tr>
-                <th>Names</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-         {{#each allusers}}
-            <tr>
-                <td>{{profile.name}}</td>
-                <td>
-                {{_id}}
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
- </template>
               </div>
             
             </div>
@@ -1357,3 +1337,23 @@
                         </a>
                     </li>
 </template>
+<template name="au">
+               <table class="table">
+        <thead>
+            <tr>
+                <th>Names</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+         {{#each allusers}}
+            <tr>
+                <td>{{profile.name}}</td>
+                <td>
+                {{_id}}
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+ </template>
