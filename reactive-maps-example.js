@@ -86,9 +86,9 @@ if (Meteor.isClient) {
 
            var this_exists = Friends.find(selector, {limit: 1}).count() > 0;
            if(this_exists == true) {
-           return 44;
+           return '44';
            } else {
-        return 45;
+        return '45';
            }
    }
    });
