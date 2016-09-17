@@ -1350,11 +1350,11 @@
             <tr>
                 <td>{{profile.name}}</td>
                 <td>
-                 {{#if equals isFriend 45}}
+                 {{#if equals isFriend '45'}}
                 <button type="button" id="{{_id}}" class="btn btn-info">Add Friend</button>
                 {{else}}
-                {{#if equals isFriend 44}}
-               <button type="button" id="{{_id}}" class="btn btn-info" disabled>Add Friend</button>
+                {{#if equals isFriend '44'}}
+               <button type="button" id="{{_id}}" class="btn btn-danger" disabled>Remove Friend</button>
                 {{/if}}
                 {{/if}}
                 
