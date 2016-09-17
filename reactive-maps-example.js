@@ -1,9 +1,16 @@
 
 if(Meteor.isServer){
-    Meteor.publish("users", function () {
+    Friends = new Meteor.Collection('friends');
+    Requests = new Meteor.Collection('requests');
+    Meteor.publish("friends", function () {
+           return Friends.find();
+    });
+     Meteor.publish("requests", function () {
+           return Requests.find();
+    });
+     Meteor.publish("users", function () {
            return Meteor.users.find();
     });
-    
     Meteor.startup(function() {  
   Accounts.loginServiceConfiguration.remove({
   service: "facebook"
@@ -37,6 +44,8 @@ Accounts.loginServiceConfiguration.insert({
 }
 if (Meteor.isClient) {
   Meteor.subscribe("users");
+  Meteor.subscribe("friends");
+  Meteor.subscribe("requests");
    Template.lenav.events({
   'click .kr': function (event,template) {
    event.preventDefault();
