@@ -67,6 +67,22 @@ if (Meteor.isClient) {
     Template.au.helpers({
     allusers: function() {
     return Meteor.users.find();
+   },
+ isFriend: function() {
+ var userid = event.target.id;
+ var cuserid = Meteor.userId();
+ 
+ var selector = {
+            "userid": cuserid,
+            "friendid":userid
+            };
+
+           var this_exists = Friends.find(selector, {limit: 1}).count() > 0;
+           if(this_exists == true) {
+           return 44;
+           } else {
+        return 45;
+           }
    }
    });
  Template.logout.events({
