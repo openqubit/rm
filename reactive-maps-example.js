@@ -64,6 +64,10 @@ if (Meteor.isClient) {
     alert(event.target.id);
   }
    });
+   Template.registerHelper('equals', function (a, b) {
+      return a === b;
+    });
+    
     Template.au.helpers({
     allusers: function() {
     return Meteor.users.find();
