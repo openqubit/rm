@@ -38,12 +38,18 @@ if (Meteor.isClient) {
     console.log('lenav');
   }
    });
+    Template.lenav.helpers({
+allusers: function() {
+    return Meteor.users.find();
+  }
+   });
  Template.logout.events({
 'click #logout': function(){
   Meteor.logout();
     document.location.reload(true);
 }	
 });
+
 
   Template.logout.onCreated(function() {
 
