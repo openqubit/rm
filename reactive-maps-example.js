@@ -73,6 +73,8 @@ if (Meteor.isClient) {
     return Meteor.users.find();
    },
  isFriend: function() {
+     
+ Meteor.subscribe("friends");
  var userid = event.target.id;
  var cuserid = Meteor.userId();
  
