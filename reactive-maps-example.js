@@ -43,6 +43,12 @@ if (Meteor.isClient) {
     console.log('lenav');
   }
    });
+    Template.au.events({
+  'click .btn': function (event,template) {
+   event.preventDefault();
+    alert(event.target.id);
+  }
+   });
     Template.au.helpers({
     allusers: function() {
     return Meteor.users.find();
