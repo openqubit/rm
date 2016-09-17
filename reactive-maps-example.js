@@ -12,6 +12,12 @@ if(Meteor.isServer){
            return Meteor.users.find();
     });
     Meteor.startup(function() {  
+        if (Friends.find().count() === 0) {
+  Friends.insert({userid:0,friendid:0});
+  }
+  if (Requests.find().count() === 0) {
+  Requests.insert({userid:0,friendid:0});
+  }
   Accounts.loginServiceConfiguration.remove({
   service: "facebook"
 });
