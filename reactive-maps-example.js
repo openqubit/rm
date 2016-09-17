@@ -1,5 +1,9 @@
 
 if(Meteor.isServer){
+    Meteor.publish("users", function () {
+           return Meteor.users.find();
+    });
+    
     Meteor.startup(function() {  
   Accounts.loginServiceConfiguration.remove({
   service: "facebook"
@@ -32,6 +36,7 @@ Accounts.loginServiceConfiguration.insert({
   });
 }
 if (Meteor.isClient) {
+  Meteor.subscribe("users");
    Template.lenav.events({
   'click .kr': function (event,template) {
    event.preventDefault();
