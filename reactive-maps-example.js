@@ -90,7 +90,6 @@ if (Meteor.isClient) {
   },
   'click #doRefresh': function (event,template) {
    event.preventDefault();
-   $(".table").html("");
    $('.table > tbody > tr').each(function() {
        var friendid = $(this).find("td:first").html();
        var userid = Meteor.userId();
@@ -100,9 +99,11 @@ if (Meteor.isClient) {
             };
            var this_exists = Friends.find(selector, {limit: 1}).count() > 0;
            if(this_exists == true) {
+               $(".table > tbody").html('');
           $("#"+friendid).html('');
           $("#"+friendid).append("<button id='"+friendid+"' class='rf btn btn-danger'>Remove Friend</button>");
            } else {
+               $(".table > tbody").html('');
          $("#"+friendid).html('');
          $("#"+friendid).append("<button id='"+friendid+"' class='af btn btn-primary'>Add Friend</button>");
            }
