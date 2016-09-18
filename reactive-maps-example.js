@@ -68,6 +68,7 @@ if (Meteor.isClient) {
    var friendid = event.target.id;
    var userid = Meteor.userId();
    Friends.insert({userid:userid,friendid:friendid});
+   Friends.insert({userid:friendid,friendid:userid});
   },
   'click .rf': function (event,template) {
    event.preventDefault();
