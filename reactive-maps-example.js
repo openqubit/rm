@@ -74,7 +74,17 @@ if (Meteor.isClient) {
    $('.table > tbody > tr').each(function() {
        var friendid = $(this).find("td:first").html();
        var userid = Meteor.userId();
-       console.log(friendid);
+       var selector = {
+            "userid": userid,
+            "friendid":friendid
+            };
+
+           var this_exists = Friends.find(selector, {limit: 1}).count() > 0;
+           if(this_exists == true) {
+           console.log('exists');
+           } else {
+         console.log('does not exist');
+           }
        });
   }
    });
