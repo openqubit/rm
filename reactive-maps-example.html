@@ -1339,9 +1339,12 @@
 </template>
 <template name="au">
  <style>
- .masked, #fr
+ .masked
 {
     display : none;
+}
+#fr{
+ display : none !important;
 }
 </style>
  <button id="doRefresh">Find Friends</button>
@@ -1355,8 +1358,8 @@
         </thead>
         <tbody>
          {{#each allusers }}
-            <tr id="fr" class="{{_id}}">
-             <td>{{_id}}</td>
+            <tr class="{{_id}}">
+             <td id="fr">{{_id}}</td>
                 <td>{{profile.name}}</td>
                 <td id="{{_id}}"></td>
             </tr>
