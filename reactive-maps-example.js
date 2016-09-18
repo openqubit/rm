@@ -85,8 +85,8 @@ if (Meteor.isClient) {
             "userid": friendid,
             "friendid":userid
             };
-            Meteor.call('removeFriend');
-            Meteor.call('removeFriendCompletely');
+            Meteor.call('removeFriend',selector);
+            Meteor.call('removeFriendCompletely',selector2);
   },
   'click #doRefresh': function (event,template) {
    event.preventDefault();
