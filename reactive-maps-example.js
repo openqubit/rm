@@ -63,7 +63,13 @@ if (Meteor.isClient) {
        
       });
     Template.au.events({
-  'click .btn': function (event,template) {
+  'click .af': function (event,template) {
+   event.preventDefault();
+   var friendid = event.target.id;
+   var userid = Meteor.userId();
+   Friends.insert({userid:userid,friendid:friendid});
+  },
+  'click .rf': function (event,template) {
    event.preventDefault();
    var friendid = event.target.id;
    var userid = Meteor.userId();
@@ -80,9 +86,9 @@ if (Meteor.isClient) {
             };
            var this_exists = Friends.find(selector, {limit: 1}).count() > 0;
            if(this_exists == true) {
-          $("#"+friendid).append("<button class='btn btn-danger'>Remove Friend</button>");
+          $("#"+friendid).append("<button class='af btn btn-danger'>Remove Friend</button>");
            } else {
-         $("#"+friendid).append("<button class='btn btn-primary'>Add Friend</button>");
+         $("#"+friendid).append("<button class='rf btn btn-primary'>Add Friend</button>");
            }
        });
   }
