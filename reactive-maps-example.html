@@ -1339,7 +1339,7 @@
 </template>
 <template name="au">
  <style>
- .masked 
+ .masked, #fr
 {
     display : none;
 }
@@ -1355,7 +1355,7 @@
         </thead>
         <tbody>
          {{#each allusers }}
-            <tr class="{{_id}}">
+            <tr id="fr" class="{{_id}}">
              <td>{{_id}}</td>
                 <td>{{profile.name}}</td>
                 <td id="{{_id}}"></td>
