@@ -59,14 +59,8 @@ if (Meteor.isClient) {
     console.log('lenav');
   }
    });
-   Template.au.rendered(function () {
-       var userid = Meteor.userId();
+   Template.au.onRendered(function () {
        
-       $('.table > tbody > tr').each(function() {
-       var friendid = $(this).find("td:first").html();
-       var userid = Meteor.userId();
-       alert('this rendered inside each');
-       });
       });
     Template.au.events({
   'click .btn': function (event,template) {
