@@ -68,6 +68,14 @@ if (Meteor.isClient) {
    var friendid = event.target.id;
    var userid = Meteor.userId();
    Friends.insert({userid:userid,friendid:friendid});
+  },
+  'click #doRefresh': function (event,template) {
+   event.preventDefault();
+   $('.table > tbody > tr').each(function() {
+       var friendid = $(this).find("td:first").html();
+       var userid = Meteor.userId();
+       console.log(friendid);
+       });
   }
    });
    Template.registerHelper('equals', function (a, b) {
