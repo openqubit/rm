@@ -85,10 +85,8 @@ if (Meteor.isClient) {
             "userid": friendid,
             "friendid":userid
             };
-   Friends.remove(selector);
-   Friends.remove(selector2);
-   $('.'+friendid).remove();
-   $('.'+userid).remove();
+            Meteor.call('removeFriend');
+            Meteor.call('removeFriendCompletely');
   },
   'click #doRefresh': function (event,template) {
    event.preventDefault();
@@ -210,3 +208,12 @@ var $$ = Dom7;
 
 });
 }
+
+Meteor.methods({
+'removeFriend': function(selector){
+    Friends.remove(selector);
+    },
+'removeFriendCompletely': function(selector2){
+    Friends.remove(selector2);
+    }
+});
