@@ -1347,11 +1347,13 @@
             </tr>
         </thead>
         <tbody>
+         {{#each allusers }}
             <tr>
-                <td>{{_id}}</td>
+                <td class="buttonId">{{_id}}</td>
                 <td>{{profile.name}}</td>
-                <td>hi</td>
+                <td class="buttonAction">hi</td>
             </tr>
+            {{/each}}
         </tbody>
     </table>
  </template>
