@@ -60,7 +60,7 @@ if (Meteor.isClient) {
   }
    });
    Template.au.onRendered(function () {
-       
+       $('td:nth-child(1)').hide();
       });
     Template.au.events({
   'click .af': function (event,template) {
