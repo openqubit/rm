@@ -81,9 +81,9 @@ if (Meteor.isClient) {
 
            var this_exists = Friends.find(selector, {limit: 1}).count() > 0;
            if(this_exists == true) {
-           $( "<button class='btn btn-danger'>Remove Friend</button>").appendTo(friendid);
+               $(friendid).append( "<button class='btn btn-danger'>Remove Friend</button>");
            } else {
-         $( "<button class='btn btn-primary'>Add Friend</button>").appendTo(friendid);
+         $(friendid).append( "<button class='btn btn-primary'>Add Friend</button>");
            }
        });
   }
