@@ -1342,7 +1342,6 @@
                <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Names</th>
                 <th>Action</th>
             </tr>
@@ -1350,9 +1349,8 @@
         <tbody>
          {{#each allusers }}
             <tr>
-                <td class="buttonId">{{_id}}</td>
                 <td>{{profile.name}}</td>
-                <td class="buttonAction"></td>
+                <td id="{{_id}}"></td>
             </tr>
             {{/each}}
         </tbody>
