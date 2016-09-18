@@ -60,6 +60,10 @@ if (Meteor.isClient) {
   }
    });
    Template.au.onRendered(function () {
+       
+       var userid = Meteor.userId();
+alert(userid);
+
        $('.table > tbody  > tr').each(function() {
 var friendid = $(this).find("td:first").html();
 var userid = Meteor.userId();
