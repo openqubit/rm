@@ -99,11 +99,9 @@ if (Meteor.isClient) {
             };
            var this_exists = Friends.find(selector, {limit: 1}).count() > 0;
            if(this_exists == true) {
-               $(".table > tbody").html('');
           $("#"+friendid).html('');
           $("#"+friendid).append("<button id='"+friendid+"' class='rf btn btn-danger'>Remove Friend</button>");
            } else {
-               $(".table > tbody").html('');
          $("#"+friendid).html('');
          $("#"+friendid).append("<button id='"+friendid+"' class='af btn btn-primary'>Add Friend</button>");
            }
