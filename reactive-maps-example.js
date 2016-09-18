@@ -59,6 +59,9 @@ if (Meteor.isClient) {
     console.log('lenav');
   }
    });
+   Template.au.onRendered(function() {
+  alert('onrendered');
+});
     Template.au.events({
   'click .btn': function (event,template) {
    event.preventDefault();
