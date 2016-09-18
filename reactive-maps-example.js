@@ -59,7 +59,7 @@ if (Meteor.isClient) {
     console.log('lenav');
   }
    });
-   Template.au.onCreated(function () {
+   Template.au.onRendered(function () {
        $('.table > tbody  > tr').each(function() {
 var friendid = $(this).find("td:first").html();
 var userid = Meteor.userId();
