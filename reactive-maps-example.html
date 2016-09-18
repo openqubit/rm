@@ -1341,26 +1341,17 @@
                <table class="table">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Names</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-         {{#each allusers}}
             <tr>
+                <td class="id">{{_id}}</td>
                 <td>{{profile.name}}</td>
-                <td>
-                 {{#if equals isFriend '45'}}
-                <button type="button" id="{{_id}}" class="btn btn-info">Add Friend</button>
-                {{else}}
-                {{#if equals isFriend '44'}}
-               <button type="button" id="{{_id}}" class="btn btn-danger" disabled>Remove Friend</button>
-                {{/if}}
-                {{/if}}
-                
-                </td>
+                <td class="actionButton"></td>
             </tr>
-            {{/each}}
         </tbody>
     </table>
  </template>
