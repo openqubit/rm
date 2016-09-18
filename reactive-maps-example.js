@@ -65,15 +65,52 @@ if (Meteor.isClient) {
     Template.au.events({
   'click .af': function (event,template) {
    event.preventDefault();
+    function freshRender(){
+        $('.table > tbody > tr').each(function() {
+       var friendid = $(this).find("td:first").html();
+       var userid = Meteor.userId();
+       var selector = {
+            "userid": userid,
+            "friendid":friendid
+            };
+           var this_exists = Friends.find(selector, {limit: 1}).count() > 0;
+           if(this_exists == true) {
+          $("#"+friendid).html('');
+          $("#"+friendid).append("<button id='"+friendid+"' class='rf btn btn-danger'>Remove Friend</button>");
+           } else {
+         $("#"+friendid).html('');
+         $("#"+friendid).append("<button id='"+friendid+"' class='af btn btn-primary'>Add Friend</button>");
+           }
+       });
+   }
    var friendid = event.target.id;
    var userid = Meteor.userId();
    Friends.insert({userid:userid,friendid:friendid});
    Friends.insert({userid:friendid,friendid:userid});
    //$('.'+friendid).remove();
    //$('.'+userid).remove();
+   freshRender();
   },
   'click .rf': function (event,template) {
    event.preventDefault();
+    function freshRender(){
+        $('.table > tbody > tr').each(function() {
+       var friendid = $(this).find("td:first").html();
+       var userid = Meteor.userId();
+       var selector = {
+            "userid": userid,
+            "friendid":friendid
+            };
+           var this_exists = Friends.find(selector, {limit: 1}).count() > 0;
+           if(this_exists == true) {
+          $("#"+friendid).html('');
+          $("#"+friendid).append("<button id='"+friendid+"' class='rf btn btn-danger'>Remove Friend</button>");
+           } else {
+         $("#"+friendid).html('');
+         $("#"+friendid).append("<button id='"+friendid+"' class='af btn btn-primary'>Add Friend</button>");
+           }
+       });
+   }
    var friendid = event.target.id;
    var userid = Meteor.userId();
     var selector = {
@@ -87,9 +124,11 @@ if (Meteor.isClient) {
             };
             Meteor.call('removeFriend',selector);
             Meteor.call('removeFriendCompletely',selector2);
+            freshRender();
   },
   'click #doRefresh': function (event,template) {
    event.preventDefault();
+  
    $('.table > tbody > tr').each(function() {
        var friendid = $(this).find("td:first").html();
        var userid = Meteor.userId();
