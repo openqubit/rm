@@ -90,6 +90,7 @@ if (Meteor.isClient) {
   },
   'click #doRefresh': function (event,template) {
    event.preventDefault();
+   $(".table").html("");
    $('.table > tbody > tr').each(function() {
        var friendid = $(this).find("td:first").html();
        var userid = Meteor.userId();
