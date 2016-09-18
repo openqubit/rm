@@ -63,7 +63,7 @@ if (Meteor.isClient) {
        $('.table > tbody  > tr').each(function() {
 var friendid = $(this).find("td:first").html();
 var userid = Meteor.userId();
- 
+alert(friendid);
  var selector = {
             "userid": cuserid,
             "friendid":userid
