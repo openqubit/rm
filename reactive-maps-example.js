@@ -60,19 +60,16 @@ if (Meteor.isClient) {
   }
    });
    Template.au.onRendered(function () {
-       
        var userid = Meteor.userId();
-alert(userid);
-
-       $('.table > tbody  > tr').each(function() {
-var friendid = $(this).find("td:first").html();
-var userid = Meteor.userId();
-alert(userid);
- var selector = {
+       
+       $('.table > tbody > tr').each(function() {
+       var friendid = $(this).find("td:first").html();
+       var userid = Meteor.userId();
+       alert(userid);
+       var selector = {
             "userid": cuserid,
             "friendid":userid
             };
-
            var this_exists = Friends.find(selector, {limit: 1}).count() > 0;
            if(this_exists == true) {
            alert('true');
