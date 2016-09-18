@@ -86,9 +86,9 @@ if (Meteor.isClient) {
             };
            var this_exists = Friends.find(selector, {limit: 1}).count() > 0;
            if(this_exists == true) {
-          $("#"+friendid).append("<button id="friendid" class='rf btn btn-danger'>Remove Friend</button>");
+          $("#"+friendid).append("<button id='"+friendid+"' class='rf btn btn-danger'>Remove Friend</button>");
            } else {
-         $("#"+friendid).append("<button id="friendid" class='af btn btn-primary'>Add Friend</button>");
+         $("#"+friendid).append("<button id='"+friendid+"' class='af btn btn-primary'>Add Friend</button>");
            }
        });
   }
