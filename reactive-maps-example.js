@@ -4,7 +4,7 @@
 if(Meteor.isClient) {
     Router.route('/',function(){
         console.log('landing page is loaded');
-        var latLng = Geolocation.latLng();
+        latLng = Geolocation.latLng();
         window.location = '/' + latLng.lat + '/' + latLng.lng;
     });
 }
