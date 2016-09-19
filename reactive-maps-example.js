@@ -5,7 +5,8 @@ if(Meteor.isClient) {
     Router.route('/',function(){
         console.log('landing page is loaded');
         latLng = Geolocation.latLng();
-        window.location = '/' + latLng.lat + '/' + latLng.lng;
+        var userid = Meteor.userId();
+        window.location = '/' + latLng.lat + '/' + latLng.lng + '/' + userid;
     });
 }
 
