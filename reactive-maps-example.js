@@ -1,6 +1,14 @@
     Friends = new Meteor.Collection('friends');
     Requests = new Meteor.Collection('requests');
     
+if(Meteor.isClient) {
+    Router.route('/',function(){
+        console.log('landing page is loaded');
+        var ran = toString(Math.floor((Math.random() * 544) + 1));
+        window.location = '/' + ran;
+    });
+}
+
 if(Meteor.isServer){
 
     Meteor.publish("friends", function () {
