@@ -123,7 +123,6 @@ if (Meteor.isClient) {
               function (data) {
                 console.log(data);
                 for( var i = 0; i < data.data.length; i++ ){
-                    alert(i);
                 console.log(data.data[i].name);
                  }
               });
