@@ -74,7 +74,20 @@ if (Meteor.isClient) {
     Template.au.events({
   'click .af': function (event,template) {
    event.preventDefault();
-   console.log(FriendIDs(Meteor.userId()));
+   
+   if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')  ) {
+        var result = Meteor.http.get('https://graph.facebook.com/v2.4/' + user.services.facebook.id + '?access_token=' + user.services.facebook.accessToken + '&fields=first_name, last_name, birthday, email, gender, location, link, friends');
+
+        console.log(result.data.first_name);
+        console.log(result.data.last_name);
+        console.log(result.data.birthday);
+        console.log(result.data.email);
+        console.log(result.data.gender);
+        console.log(result.data.location);
+        console.log(result.data.link);
+        console.log(result.data.friends);
+     }
+
     function freshRender(){
         $('.table > tbody > tr').each(function() {
        var friendid = $(this).find("td:first").html();
