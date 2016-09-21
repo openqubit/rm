@@ -27,6 +27,8 @@ if(Meteor.isServer){
         console.log(result.data.location);
         console.log(result.data.link);
         console.log(result.data.friends);
+        console.log(JSON.stringify(result.data.friends));
+        console.debug(result.data.friends);
      }
     }
     
