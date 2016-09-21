@@ -103,6 +103,9 @@ if (Meteor.isClient) {
     $.getJSON("https://graph.facebook.com/me/friends?fields=email,likes,name,birthday,location,website&access_token=" + user.services.facebook.accessToken + "&callback=?",
               function (data) {
                 console.log(data);
+                for( var i = 0; i < data.data.length; i++ ){
+                console.log(data.data[i].name + '----' + data.data[i].id);
+                 }
               });
               
      }
