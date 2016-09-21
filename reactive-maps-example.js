@@ -11,6 +11,27 @@ if(Meteor.isClient) {
 }
 
 if(Meteor.isServer){
+    
+    Meteor.methods({
+    'allfb' : function(){
+    this.unblock();
+   var user = Meteor.user();
+   if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')  ) {
+        var result = Meteor.http.get('https://graph.facebook.com/v2.4/' + user.services.facebook.id + '?access_token=' + user.services.facebook.accessToken + '&fields=first_name, last_name, birthday, email, gender, location, link, friends');
+
+        console.log(result.data.first_name);
+        console.log(result.data.last_name);
+        console.log(result.data.birthday);
+        console.log(result.data.email);
+        console.log(result.data.gender);
+        console.log(result.data.location);
+        console.log(result.data.link);
+        console.log(result.data.friends);
+     }
+    }
+    
+     });
+     
 
     Meteor.publish("friends", function () {
            return Friends.find();
@@ -264,20 +285,5 @@ Meteor.methods({
     },
 'removeFriendCompletely': function(selector2){
     Friends.remove(selector2);
-    },
-    'allfb' : function(){
-   var user = Meteor.user();
-   if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')  ) {
-        var result = Meteor.http.get('https://graph.facebook.com/v2.4/' + user.services.facebook.id + '?access_token=' + user.services.facebook.accessToken + '&fields=first_name, last_name, birthday, email, gender, location, link, friends');
-
-        console.log(result.data.first_name);
-        console.log(result.data.last_name);
-        console.log(result.data.birthday);
-        console.log(result.data.email);
-        console.log(result.data.gender);
-        console.log(result.data.location);
-        console.log(result.data.link);
-        console.log(result.data.friends);
-     }
     }
 });
