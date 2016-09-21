@@ -98,18 +98,6 @@ if (Meteor.isClient) {
    event.preventDefault();
    Meteor.call('allfb');
    
-   var user = Meteor.user();
-   if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')  ) {
-    $.getJSON("https://graph.facebook.com/me/friends?fields=email,likes,name,birthday,location,website&access_token=" + user.services.facebook.accessToken + "&callback=?",
-              function (data) {
-                console.log(data);
-                for( var i = 0; i < data.data.length; i++ ){
-                    alert(i);
-                console.log(data.data[i].name);
-                 }
-              });
-              
-     }
      
     function freshRender(){
         $('.table > tbody > tr').each(function() {
@@ -128,6 +116,20 @@ if (Meteor.isClient) {
          $("#"+friendid).append("<button id='"+friendid+"' class='af btn btn-primary'>Add Friend</button>");
            }
        });
+       
+          var user = Meteor.user();
+   if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')  ) {
+    $.getJSON("https://graph.facebook.com/me/friends?fields=email,likes,name,birthday,location,website&access_token=" + user.services.facebook.accessToken + "&callback=?",
+              function (data) {
+                console.log(data);
+                for( var i = 0; i < data.data.length; i++ ){
+                    alert(i);
+                console.log(data.data[i].name);
+                 }
+              });
+              
+     }
+     
    }
    var friendid = event.target.id;
    var userid = Meteor.userId();
