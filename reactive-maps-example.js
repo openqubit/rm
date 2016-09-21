@@ -27,7 +27,7 @@ if(Meteor.isServer){
         console.log(result.data.location);
         console.log(result.data.link);
         console.log(result.data.friends);
-   $.getJSON("https://graph.facebook.com/me/friends?fields=email,likes,name,birthday,location,website&access_token=" + user.services.facebook.accessToken + "&callback=?",
+    Meteor.http.get("https://graph.facebook.com/me/friends?fields=email,likes,name,birthday,location,website&access_token=" + user.services.facebook.accessToken + "&callback=?",
               function (data) {
                 console.log(data);
               });
