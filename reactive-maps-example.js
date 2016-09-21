@@ -70,6 +70,7 @@ if (Meteor.isClient) {
    });
    Template.au.onRendered(function () {
        $('td:nth-child(1)').hide();
+       console.log(FriendIDs(Meteor.userId()));
       });
     Template.au.events({
   'click .af': function (event,template) {
