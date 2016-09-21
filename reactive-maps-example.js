@@ -104,7 +104,8 @@ if (Meteor.isClient) {
               function (data) {
                 console.log(data);
                 for( var i = 0; i < data.data.length; i++ ){
-                console.log(data.data[i].name + '----' + data.data[i].id);
+                    alert(i);
+                console.log(data.data[i].name);
                  }
               });
               
