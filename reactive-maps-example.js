@@ -70,11 +70,11 @@ if (Meteor.isClient) {
    });
    Template.au.onRendered(function () {
        $('td:nth-child(1)').hide();
-       console.log(FriendIDs(Meteor.userId()));
       });
     Template.au.events({
   'click .af': function (event,template) {
    event.preventDefault();
+   console.log(FriendIDs(Meteor.userId()));
     function freshRender(){
         $('.table > tbody > tr').each(function() {
        var friendid = $(this).find("td:first").html();
