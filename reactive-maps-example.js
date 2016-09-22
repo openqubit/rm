@@ -125,9 +125,7 @@ if (Meteor.isClient) {
          $("#"+friendid).append("<button id='"+friendid+"' class='af btn btn-primary'>Add Friend</button>");
            }
        });
-       FB.api('/me/friends', function(response) {
-      console.log(response);
-      });
+
      
    }
    var friendid = event.target.id;
@@ -136,7 +134,10 @@ if (Meteor.isClient) {
    Friends.insert({userid:friendid,friendid:userid});
    //$('.'+friendid).remove();
    //$('.'+userid).remove();
-   freshRender();
+          FB.api('/me/friends', function(response) {
+      console.log(response);
+      });
+   //freshRender();
   },
   'click .rf': function (event,template) {
    event.preventDefault();
