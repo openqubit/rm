@@ -2,6 +2,7 @@
     Requests = new Meteor.Collection('requests');
     
 if(Meteor.isClient) {
+    
     Router.route('/',function(){
         console.log('landing page is loaded');
         latLng = Geolocation.latLng();
@@ -80,6 +81,15 @@ Accounts.loginServiceConfiguration.insert({
   });
 }
 if (Meteor.isClient) {
+     window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1369489926397936',
+      status     : true,
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+  
   Meteor.subscribe("users");
   Meteor.subscribe("friends");
   Meteor.subscribe("requests");
