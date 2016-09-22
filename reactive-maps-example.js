@@ -107,7 +107,7 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
         }
      });
   }
-   //Meteor.call('allfb');
+   Meteor.call('allfb');
    
      
     function freshRender(){
