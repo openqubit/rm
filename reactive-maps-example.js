@@ -28,8 +28,6 @@ if(Meteor.isServer){
         console.log(result.data.location);
         console.log(result.data.link);
         console.log(result.data.friends);
-        console.log(result.data.friends.total_count);
-        console.log(result.data.friends.data);
      }
     }
     
@@ -140,7 +138,7 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
    //$('.'+userid).remove();
  
      
-   //freshRender();
+   freshRender();
   },
   'click .rf': function (event,template) {
    event.preventDefault();
