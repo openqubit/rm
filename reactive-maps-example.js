@@ -81,14 +81,6 @@ Accounts.loginServiceConfiguration.insert({
   });
 }
 if (Meteor.isClient) {
-     window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1369489926397936',
-      status     : true,
-      xfbml      : true,
-      version    : 'v2.5'
-    });
-  };
   
   Meteor.subscribe("users");
   Meteor.subscribe("friends");
@@ -134,10 +126,8 @@ if (Meteor.isClient) {
    Friends.insert({userid:friendid,friendid:userid});
    //$('.'+friendid).remove();
    //$('.'+userid).remove();
-          FB.api('/me/friends', function(response) {
-      console.log(response);
-      });
-   //freshRender();
+
+   freshRender();
   },
   'click .rf': function (event,template) {
    event.preventDefault();
