@@ -28,6 +28,8 @@ if(Meteor.isServer){
         console.log(result.data.location);
         console.log(result.data.link);
         console.log(result.data.friends);
+        console.log(result.data.friends.total_count);
+        console.log(result.data.friends.data);
      }
     }
     
