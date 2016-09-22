@@ -98,9 +98,9 @@ if (Meteor.isClient) {
   'click .af': function (event,template) {
    event.preventDefault();
    var user = Meteor.user();
-   if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')  ) {
+   if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')) {
  $.getJson      
-$.getJSON('https://graph.facebook.com/qubitsmith/friends?limit=100&access_token=' + user.services.facebook.accessToken, function(mydata) {
+$.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user.services.facebook.accessToken, function(mydata) {
        console.log('we are in');
         for (var i in mydata.data) {
             console.log(mydata.data[i].name);
