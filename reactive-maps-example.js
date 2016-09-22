@@ -126,8 +126,18 @@ if (Meteor.isClient) {
    Friends.insert({userid:friendid,friendid:userid});
    //$('.'+friendid).remove();
    //$('.'+userid).remove();
-
-   freshRender();
+ var user = Meteor.user();
+   if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')  ) {
+        
+$.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token='+user.services.facebook.accessToken+', function(mydata) {
+       
+        for (var i in mydata.data) {
+            console.log(mydata.data[i].name);
+        }
+   });
+     }
+     
+   //freshRender();
   },
   'click .rf': function (event,template) {
    event.preventDefault();
