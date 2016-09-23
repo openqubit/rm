@@ -1,19 +1,48 @@
     Friends = new Meteor.Collection('friends');
     Requests = new Meteor.Collection('requests');
     
+Meteor.startup(function(){
+    navigator.contacts.find()
+  if(Meteor.isClient) {
+    console.log(navigator.contacts.find());
+  }
+});
+
+if(Meteor.isCordova) {
+var options = new ContactFindOptions();
+options.filter = "";
+options.multiple = true;
+var fields = ["displayName", "name"];
+vm.contacts = navigator.contacts.find(fields, onSuccess, onError, options);
+
+function onSuccess(contacts) {
+  console.log(contacts.length + 'contacts');
+  for (var i = 0; i < contacts.length; i++) {
+    console.log("Display Name = " + contacts[i].displayName);
+  }
+}
+
+function onError(contactError) {
+  console.log('onError!');
+}
+}
+
 if(Meteor.isClient) {
+    /**
     Router.route('/',function(){
         console.log('landing page is loaded');
         latLng = Geolocation.latLng();
         var userid = Meteor.userId();
         window.location = '/' + latLng.lat + '/' + latLng.lng + '/' + userid;
     });
+    */
 }
 
 if(Meteor.isServer){
     
     Meteor.methods({
     'allfb' : function(){
+        /**
     this.unblock();
    var user = Meteor.user();
    if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')  ) {
@@ -29,7 +58,8 @@ if(Meteor.isServer){
         console.log(result.data.friends);
      }
     }
-    
+    */
+    }
      });
      
 
@@ -80,6 +110,7 @@ Accounts.loginServiceConfiguration.insert({
   });
 }
 if (Meteor.isClient) {
+  
   Meteor.subscribe("users");
   Meteor.subscribe("friends");
   Meteor.subscribe("requests");
@@ -93,8 +124,20 @@ if (Meteor.isClient) {
        $('td:nth-child(1)').hide();
       });
     Template.au.events({
+        
   'click .af': function (event,template) {
+      /**
    event.preventDefault();
+   var user = Meteor.user();
+   if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')) {
+ $.getJson      
+$.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user.services.facebook.accessToken, function(mydata) {
+       console.log('we are in');
+        for (var i in mydata.data) {
+            console.log(mydata.data[i].name);
+        }
+     });
+  }
    Meteor.call('allfb');
    
      
@@ -115,18 +158,7 @@ if (Meteor.isClient) {
          $("#"+friendid).append("<button id='"+friendid+"' class='af btn btn-primary'>Add Friend</button>");
            }
        });
-       
-          var user = Meteor.user();
-   if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')  ) {
-    $.getJSON("https://graph.facebook.com/me/friends?fields=email,likes,name,birthday,location,website&access_token=" + user.services.facebook.accessToken + "&callback=?",
-              function (data) {
-                console.log(data);
-                for( var i = 0; i < data.data.length; i++ ){
-                console.log(data.data[i].name);
-                 }
-              });
-              
-     }
+
      
    }
    var friendid = event.target.id;
@@ -135,9 +167,13 @@ if (Meteor.isClient) {
    Friends.insert({userid:friendid,friendid:userid});
    //$('.'+friendid).remove();
    //$('.'+userid).remove();
+ 
+     
    freshRender();
+   */
   },
   'click .rf': function (event,template) {
+      /**
    event.preventDefault();
     function freshRender(){
         $('.table > tbody > tr').each(function() {
@@ -171,8 +207,10 @@ if (Meteor.isClient) {
             Meteor.call('removeFriend',selector);
             Meteor.call('removeFriendCompletely',selector2);
             freshRender();
+            */
   },
   'click #doRefresh': function (event,template) {
+      /**
    event.preventDefault();
   
    $('.table > tbody > tr').each(function() {
@@ -191,6 +229,7 @@ if (Meteor.isClient) {
          $("#"+friendid).append("<button id='"+friendid+"' class='af btn btn-primary'>Add Friend</button>");
            }
        });
+       */
   }
    });
    Template.registerHelper('equals', function (a, b) {
@@ -202,6 +241,7 @@ if (Meteor.isClient) {
     return Meteor.users.find();
    },
  isFriend: function() {
+     /**
  var userid = event.target.id;
  var cuserid = Meteor.userId();
  
@@ -216,12 +256,15 @@ if (Meteor.isClient) {
            } else {
         return '45';
            }
+           */
    }
    });
  Template.logout.events({
 'click #logout': function(){
+    /*
   Meteor.logout();
     document.location.reload(true);
+    */
 }	
 });
 
@@ -231,6 +274,25 @@ if (Meteor.isClient) {
   });
 
 Template.logout.onRendered(function () {
+    if(Meteor.isCordova) {
+var options = new ContactFindOptions();
+options.filter = "";
+options.multiple = true;
+var fields = ["displayName", "name"];
+vm.contacts = navigator.contacts.find(fields, onSuccess, onError, options);
+
+function onSuccess(contacts) {
+  console.log(contacts.length + 'contacts');
+  for (var i = 0; i < contacts.length; i++) {
+    alert("Display Name = " + contacts[i].displayName);
+  }
+}
+
+function onError(contactError) {
+  console.log('onError!');
+}
+}
+    /**
 var myApp = new Framework7();
  
 var $$ = Dom7;
@@ -290,7 +352,7 @@ var $$ = Dom7;
       }
     ]
   })
-
+*/
 });
 }
 
