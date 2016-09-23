@@ -234,6 +234,7 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
   });
 
 Template.logout.onRendered(function () {
+    /**
 var myApp = new Framework7();
  
 var $$ = Dom7;
@@ -293,7 +294,7 @@ var $$ = Dom7;
       }
     ]
   })
-
+*/
 });
 }
 
