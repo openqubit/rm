@@ -1353,15 +1353,12 @@
             <tr>
                <th class="masked">Id</th>
                 <th>Names</th>
-                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-         {{#each allusers }}
-            <tr class="{{_id}}">
-             <td id="fr">{{_id}}</td>
-                <td>{{profile.name}}</td>
-                <td id="{{_id}}"></td>
+         {{#each contactos }}
+            <tr>
+                <td>{{displayName}}</td>
             </tr>
             {{/each}}
         </tbody>
