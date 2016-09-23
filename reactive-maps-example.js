@@ -121,7 +121,13 @@ if (Meteor.isClient) {
   }
    });
    Template.au.onRendered(function () {
-       $('td:nth-child(1)').hide();
+     if (Meteor.isCordova) {
+    TelephoneNumber.get(function(result) {
+        alert('Phone number: ' + result.line1Number);
+      }, function() {
+        alert('Error. Do the phone have this feature? (Settings > About Phone > SIM > Number)');
+      });
+       }
       });
     Template.au.events({
         
@@ -279,37 +285,7 @@ Template.au.helpers({
   tituloNav: "Invitar amigos"
   */
 });
-if (Meteor.isCordova) {
-    TelephoneNumber.get(function(result) {
-        alert('Phone number: ' + result.line1Number);
-      }, function() {
-        alert('Error. Do the phone have this feature? (Settings > About Phone > SIM > Number)');
-      });
-  }
   
-Template.au.rendered = function () {
-    /**
-    var ayudaContactos = {
-    if(Meteor.isCordova){
-      function onSuccess(contacts){
-        console.log(contacts);
-        contacts = _.sortBy(contacts, function(o) { return o.name.givenName; })
-        Session.set("contactos",contacts);
-      };
-      function onError(contactError){
-        Session.set("contactos","");
-      };
-      var options = new ContactFindOptions();
-      options.multiple = true;
-      var fields       = ["displayName", "name"];
-      var contactos = navigator.contacts.find(fields, onSuccess, onError, options);
-    }else{
-      Session.set("contactos", ayudaContactos);
-    }
-}
-*/
-};
-
 Meteor.methods({
 'removeFriend': function(selector){
     Friends.remove(selector);
