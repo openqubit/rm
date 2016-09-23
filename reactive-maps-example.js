@@ -235,7 +235,7 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
    Template.registerHelper('equals', function (a, b) {
       return a === b;
     });
-/***    
+    /**
     Template.au.helpers({
     allusers: function() {
     return Meteor.users.find();
@@ -257,9 +257,7 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
         return '45';
            }
            */
-   }
-   });
-   */
+   
  Template.logout.events({
 'click #logout': function(){
     /*
