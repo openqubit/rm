@@ -2,19 +2,21 @@
     Requests = new Meteor.Collection('requests');
     
 if(Meteor.isClient) {
-    
+    /**
     Router.route('/',function(){
         console.log('landing page is loaded');
         latLng = Geolocation.latLng();
         var userid = Meteor.userId();
         window.location = '/' + latLng.lat + '/' + latLng.lng + '/' + userid;
     });
+    */
 }
 
 if(Meteor.isServer){
     
     Meteor.methods({
     'allfb' : function(){
+        /**
     this.unblock();
    var user = Meteor.user();
    if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')  ) {
@@ -30,7 +32,7 @@ if(Meteor.isServer){
         console.log(result.data.friends);
      }
     }
-    
+    */
      });
      
 
@@ -95,7 +97,9 @@ if (Meteor.isClient) {
        $('td:nth-child(1)').hide();
       });
     Template.au.events({
+        
   'click .af': function (event,template) {
+      /**
    event.preventDefault();
    var user = Meteor.user();
    if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')) {
@@ -139,8 +143,10 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
  
      
    freshRender();
+   */
   },
   'click .rf': function (event,template) {
+      /**
    event.preventDefault();
     function freshRender(){
         $('.table > tbody > tr').each(function() {
@@ -174,8 +180,10 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
             Meteor.call('removeFriend',selector);
             Meteor.call('removeFriendCompletely',selector2);
             freshRender();
+            */
   },
   'click #doRefresh': function (event,template) {
+      /**
    event.preventDefault();
   
    $('.table > tbody > tr').each(function() {
@@ -194,6 +202,7 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
          $("#"+friendid).append("<button id='"+friendid+"' class='af btn btn-primary'>Add Friend</button>");
            }
        });
+       */
   }
    });
    Template.registerHelper('equals', function (a, b) {
@@ -205,6 +214,7 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
     return Meteor.users.find();
    },
  isFriend: function() {
+     /**
  var userid = event.target.id;
  var cuserid = Meteor.userId();
  
@@ -219,12 +229,15 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
            } else {
         return '45';
            }
+           */
    }
    });
  Template.logout.events({
 'click #logout': function(){
+    /*
   Meteor.logout();
     document.location.reload(true);
+    */
 }	
 });
 
