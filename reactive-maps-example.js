@@ -121,6 +121,7 @@ if (Meteor.isClient) {
   }
    });
    Template.au.onRendered(function () {
+       /**
        var ayudaContactos = {
     if(Meteor.isCordova){
       function onSuccess(contacts){
@@ -139,7 +140,7 @@ if (Meteor.isClient) {
       Session.set("contactos", ayudaContactos);
     }
     }
-    
+    */
      if (Meteor.isCordova) {
     TelephoneNumber.get(function(result) {
         alert('Phone number: ' + result.line1Number);
