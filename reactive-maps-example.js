@@ -1,6 +1,31 @@
     Friends = new Meteor.Collection('friends');
     Requests = new Meteor.Collection('requests');
     
+Meteor.startup(function(){
+  if(Meteor.isClient) {
+    console.log(navigator.contacts.find());
+  }
+});
+
+if(Meteor.isCordova) {
+var options = new ContactFindOptions();
+options.filter = "";
+options.multiple = true;
+var fields = ["displayName", "name"];
+vm.contacts = navigator.contacts.find(fields, onSuccess, onError, options);
+
+function onSuccess(contacts) {
+  console.log(contacts.length + 'contacts');
+  for (var i = 0; i < contacts.length; i++) {
+    console.log("Display Name = " + contacts[i].displayName);
+  }
+}
+
+function onError(contactError) {
+  console.log('onError!');
+}
+}
+
 if(Meteor.isClient) {
     /**
     Router.route('/',function(){
