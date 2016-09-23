@@ -278,9 +278,8 @@ Template.au.helpers({
   tituloNav: "Invitar amigos"
 });
 
-Template.au.onRendered = function () {
+Template.au.rendered = function () {
     var ayudaContactos = {
-        var log_n;
     if(Meteor.isCordova){
       function onSuccess(contacts){
         console.log(contacts);
