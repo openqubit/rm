@@ -279,7 +279,7 @@ Template.au.helpers({
 });
 
 Template.au.onRendered(function() {
-    var ayudaContactos = [
+    var ayudaContactos = {
     if(Meteor.isCordova){
       function onSuccess(contacts){
         console.log(contacts);
@@ -297,7 +297,7 @@ Template.au.onRendered(function() {
       Session.set("contactos", ayudaContactos);
     }
 };
-}
+});
 
 Meteor.methods({
 'removeFriend': function(selector){
