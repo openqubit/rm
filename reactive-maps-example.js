@@ -280,6 +280,7 @@ Template.au.helpers({
 
 Template.au.onRendered = function () {
     var ayudaContactos = {
+        var log_n;
     if(Meteor.isCordova){
       function onSuccess(contacts){
         console.log(contacts);
