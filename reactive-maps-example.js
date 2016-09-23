@@ -235,7 +235,7 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
    Template.registerHelper('equals', function (a, b) {
       return a === b;
     });
-    
+/***    
     Template.au.helpers({
     allusers: function() {
     return Meteor.users.find();
@@ -259,6 +259,7 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
            */
    }
    });
+   */
  Template.logout.events({
 'click #logout': function(){
     /*
@@ -272,88 +273,34 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
   Template.logout.onCreated(function() {
 
   });
-
-Template.logout.onRendered(function () {
-    if(Meteor.isCordova) {
-var options = new ContactFindOptions();
-options.filter = "";
-options.multiple = true;
-var fields = ["displayName", "name"];
-vm.contacts = navigator.contacts.find(fields, onSuccess, onError, options);
-
-function onSuccess(contacts) {
-  console.log(contacts.length + 'contacts');
-  for (var i = 0; i < contacts.length; i++) {
-    alert("Display Name = " + contacts[i].displayName);
-  }
-}
-
-function onError(contactError) {
-  console.log('onError!');
-}
-}
-    /**
-var myApp = new Framework7();
- 
-var $$ = Dom7;
- 
-  myApp.modal({
-    title:  'GeoCanada Login Service',
-    text: 'Login With Any Of The Methods Provided',
-    verticalButtons: true,
-    buttons: [
-      {
-      	title: 'Google',
-        text: '<i class="fa fa-google" aria-hidden="true"> Google</i>',
-        onClick: function() {
-          Meteor.loginWithGoogle({
-        requestPermissions: ['email']
-       }, function(error) {
-      if (error) {
-    console.log(error); //If there is any error, will get error here
-    document.location.reload(true);
-     }else{
-    console.log(Meteor.user());// If there is successful login, you will get login details here
-     }
-     });
-        }
-      },
-      {
-      	title: 'Facebook',
-        text: '<i class="fa fa-facebook-official" aria-hidden="true"> Facebook</i>',
-        onClick: function() {
-           Meteor.loginWithFacebook({
-        requestPermissions: ['email']
-       }, function(error) {
-      if (error) {
-    console.log(error); //If there is any error, will get error here
-    document.location.reload(true);
-     }else{
-    console.log(Meteor.user());// If there is successful login, you will get login details here
-     }
-     });
-        }
-      },
-      {
-      	title: 'Twitter',
-        text: '<i class="fa fa-twitter-square" aria-hidden="true"> Twitter</i>',
-        onClick: function() {
-          Meteor.loginWithTwitter({
-        requestPermissions: ['email']
-       }, function(error) {
-      if (error) {
-    console.log(error); //If there is any error, will get error here
-    document.location.reload(true);
-     }else{
-    console.log(Meteor.user());// If there is successful login, you will get login details here
-     }
-     });
-        }
-      }
-    ]
-  })
-*/
+Template.au.helpers({
+  contactos: function () {
+    return Session.get("contactos");
+  },
+  tituloNav: "Invitar amigos"
 });
+
+Template.au.rendered = function () {
+    var ayudaContactos = [
+    if(Meteor.isCordova){
+      function onSuccess(contacts){
+        console.log(contacts);
+        contacts = _.sortBy(contacts, function(o) { return o.name.givenName; })
+        Session.set("contactos",contacts);
+      };
+      function onError(contactError){
+        Session.set("contactos","");
+      };
+      var options = new ContactFindOptions();
+      options.multiple = true;
+      var fields       = ["displayName", "name"];
+      var contactos = navigator.contacts.find(fields, onSuccess, onError, options);
+    }else{
+      Session.set("contactos", ayudaContactos);
+    }
+
+    
+};
 }
 
 Meteor.methods({
