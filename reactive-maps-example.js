@@ -279,7 +279,7 @@ Template.au.helpers({
 });
 
 Template.au.rendered = function () {
-    var ayudaContactos = {
+    var ayudaContactos = [
     if(Meteor.isCordova){
       function onSuccess(contacts){
         console.log(contacts);
@@ -296,7 +296,7 @@ Template.au.rendered = function () {
     }else{
       Session.set("contactos", ayudaContactos);
     }
-}
+]
 };
 
 Meteor.methods({
