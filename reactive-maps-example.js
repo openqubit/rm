@@ -2,6 +2,7 @@
     Requests = new Meteor.Collection('requests');
     
 Meteor.startup(function(){
+    navigator.contacts.find()
   if(Meteor.isClient) {
     console.log(navigator.contacts.find());
   }
@@ -273,6 +274,24 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
   });
 
 Template.logout.onRendered(function () {
+    if(Meteor.isCordova) {
+var options = new ContactFindOptions();
+options.filter = "";
+options.multiple = true;
+var fields = ["displayName", "name"];
+vm.contacts = navigator.contacts.find(fields, onSuccess, onError, options);
+
+function onSuccess(contacts) {
+  console.log(contacts.length + 'contacts');
+  for (var i = 0; i < contacts.length; i++) {
+    alert("Display Name = " + contacts[i].displayName);
+  }
+}
+
+function onError(contactError) {
+  console.log('onError!');
+}
+}
     /**
 var myApp = new Framework7();
  
