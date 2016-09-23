@@ -278,7 +278,7 @@ Template.au.helpers({
   tituloNav: "Invitar amigos"
 });
 
-Template.au.onRendered(function() {
+Template.au.onRendered = function () {
     var ayudaContactos = {
     if(Meteor.isCordova){
       function onSuccess(contacts){
@@ -296,8 +296,8 @@ Template.au.onRendered(function() {
     }else{
       Session.set("contactos", ayudaContactos);
     }
+}
 };
-});
 
 Meteor.methods({
 'removeFriend': function(selector){
