@@ -272,14 +272,24 @@ $.getJSON('https://graph.facebook.com/me/friends?limit=100&access_token=' + user
 
   });
 Template.au.helpers({
+    /**
   contactos: function () {
     return Session.get("contactos");
   },
   tituloNav: "Invitar amigos"
+  */
 });
-
+if (Meteor.isCordova) {
+    TelephoneNumber.get(function(result) {
+        alert('Phone number: ' + result.line1Number);
+      }, function() {
+        alert('Error. Do the phone have this feature? (Settings > About Phone > SIM > Number)');
+      });
+  }
+  
 Template.au.rendered = function () {
-    var ayudaContactos = [
+    /**
+    var ayudaContactos = {
     if(Meteor.isCordova){
       function onSuccess(contacts){
         console.log(contacts);
@@ -296,7 +306,8 @@ Template.au.rendered = function () {
     }else{
       Session.set("contactos", ayudaContactos);
     }
-]
+}
+*/
 };
 
 Meteor.methods({
