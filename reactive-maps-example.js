@@ -2,8 +2,9 @@
     Requests = new Meteor.Collection('requests');
     
 Meteor.startup(function(){
-    navigator.contacts.find()
+    
   if(Meteor.isClient) {
+      navigator.contacts.find();
     console.log(navigator.contacts.find());
   }
 });
