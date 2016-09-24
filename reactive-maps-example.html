@@ -208,7 +208,11 @@
             <div class="page-content">
               <nav class="dashboard-menu">
                 <div class="map-container">
-                 <iframe id="first" src="https://geocanada.herokuapp.com/Ft/first" style="width:100%; height:100%;"></iframe> 
+                      {{#unless geolocationError}}
+            {{> googleMap name="first" options=firstOptions}}
+              {{else}}
+              Geolocation failed: {{geolocationError}}
+             {{/unless}}
                  </div>
                  </nav> 
             </div>
@@ -1364,3 +1368,9 @@
         </tbody>
     </table>
  </template>
+
+<template name="map">
+  <div class="map-container">
+    {{> googleMap name="map" options=mapOptions}}
+  </div>
+</template>
