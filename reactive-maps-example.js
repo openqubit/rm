@@ -1,5 +1,6 @@
     Friends = new Meteor.Collection('friends');
     Requests = new Meteor.Collection('requests');
+    Markers = new Meteor.Collection('markers');
     
 Meteor.startup(function(){
     
