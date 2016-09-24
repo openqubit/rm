@@ -3,7 +3,7 @@
     Markers = new Meteor.Collection('markers');
     
 Meteor.startup(function(){
-    
+Markers._ensureIndex({createdAt: 1}, {expireAfterSeconds: 60});
   if(Meteor.isClient) {
       console.log('hello');
     GoogleMaps.load({
