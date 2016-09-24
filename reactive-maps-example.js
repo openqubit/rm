@@ -4,6 +4,10 @@
 Meteor.startup(function(){
     
   if(Meteor.isClient) {
+      console.log('hello');
+    GoogleMaps.load({
+    key: 'AIzaSyD81kt-LoD3_Vqyqhd1yw9YlHq8J3SHpEg'
+    });
       navigator.contacts.find();
     console.log(navigator.contacts.find());
   }
