@@ -208,11 +208,7 @@
             <div class="page-content">
               <nav class="dashboard-menu">
                 <div class="map-container">
-                      {{#unless geolocationError}}
-            {{> googleMap name="first" options=firstOptions}}
-              {{else}}
-              Geolocation failed: {{geolocationError}}
-             {{/unless}}
+                  {{> first}}
                  </div>
                  </nav> 
             </div>
@@ -1369,8 +1365,12 @@
     </table>
  </template>
 
-<template name="map">
+<template name="first">
   <div class="map-container">
-    {{> googleMap name="map" options=mapOptions}}
+    {{#unless geolocationError}}
+      {{> googleMap name="first" options=firstOptions}}
+    {{else}}
+      Geolocation failed: {{geolocationError}}
+    {{/unless}}
   </div>
 </template>
