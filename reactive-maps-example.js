@@ -74,6 +74,9 @@ if(Meteor.isServer){
     Meteor.publish("friends", function () {
            return Friends.find();
     });
+     Meteor.publish("markers", function () {
+           return Markers.find();
+    });
      Meteor.publish("requests", function () {
            return Requests.find();
     });
@@ -120,6 +123,7 @@ Accounts.loginServiceConfiguration.insert({
 if (Meteor.isClient) {
   
   Meteor.subscribe("users");
+   Meteor.subscribe("markers");
   Meteor.subscribe("friends");
   Meteor.subscribe("requests");
    Template.lenav.events({
