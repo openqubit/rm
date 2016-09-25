@@ -296,8 +296,7 @@ if (Meteor.isClient) {
 
       var markers = {};
 
-      Markers.
-      ().observe({
+      Markers.find().observe({
         added: function (document) {
           var icon;
               if(document.eventowner == '3'){
