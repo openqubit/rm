@@ -1,10 +1,16 @@
-    Friends = new Meteor.Collection('friends');
-    Requests = new Meteor.Collection('requests');
-    Markers = new Meteor.Collection('markers');
+Friends = new Meteor.Collection('friends');
+Requests = new Meteor.Collection('requests');
+Markers = new Meteor.Collection('markers');
     
 Meteor.startup(function(){
-    if(Meteor.isServer) {
+if(Meteor.isServer) {
 Markers._ensureIndex({createdAt: 1}, {expireAfterSeconds: 60});
+    if (Friends.find().count() === 0) {
+  Friends.insert({userid:0,friendid:0});
+  }
+  if (Requests.find().count() === 0) {
+  Requests.insert({userid:0,friendid:0});
+  }
 }
   if(Meteor.isClient) {  
       console.log('hello');
@@ -24,7 +30,7 @@ vm.contacts = navigator.contacts.find(fields, onSuccess, onError, options);
 function onSuccess(contacts) {
   console.log(contacts.length + 'contacts');
   for (var i = 0; i < contacts.length; i++) {
-    console.log("Display Name = " + contacts[i].displayName);
+    alert("Display Name = " + contacts[i].displayName);
   }
 }
 
@@ -33,42 +39,7 @@ function onError(contactError) {
 }
 }
 
-if(Meteor.isClient) {
-    /**
-    Router.route('/',function(){
-        console.log('landing page is loaded');
-        latLng = Geolocation.latLng();
-        var userid = Meteor.userId();
-        window.location = '/' + latLng.lat + '/' + latLng.lng + '/' + userid;
-    });
-    */
-}
-
 if(Meteor.isServer){
-    
-    Meteor.methods({
-    'allfb' : function(){
-        /**
-    this.unblock();
-   var user = Meteor.user();
-   if (user.hasOwnProperty('services') && user.services.hasOwnProperty('facebook')  ) {
-        var result = Meteor.http.get('https://graph.facebook.com/v2.4/' + user.services.facebook.id + '?access_token=' + user.services.facebook.accessToken + '&fields=first_name, last_name, birthday, email, gender, location, link, friends');
-
-        console.log(result.data.first_name);
-        console.log(result.data.last_name);
-        console.log(result.data.birthday);
-        console.log(result.data.email);
-        console.log(result.data.gender);
-        console.log(result.data.location);
-        console.log(result.data.link);
-        console.log(result.data.friends);
-     }
-    }
-    */
-    }
-     });
-     
-
     Meteor.publish("friends", function () {
            return Friends.find();
     });
@@ -81,42 +52,6 @@ if(Meteor.isServer){
      Meteor.publish("users", function () {
            return Meteor.users.find();
     });
-    Meteor.startup(function() {  
-        if (Friends.find().count() === 0) {
-  Friends.insert({userid:0,friendid:0});
-  }
-  if (Requests.find().count() === 0) {
-  Requests.insert({userid:0,friendid:0});
-  }
-  Accounts.loginServiceConfiguration.remove({
-  service: "facebook"
-});
-Accounts.loginServiceConfiguration.insert({
-  service: "facebook",
-  appId: "1369489926397936",
-  secret: "46de773cd67bc126265a82c92486b99b"
-});
-
-// first, remove configuration entry in case service is already configured
-Accounts.loginServiceConfiguration.remove({
-  service: "twitter"
-});
-Accounts.loginServiceConfiguration.insert({
-  service: "twitter",
-  consumerKey: "IYg2CZyDusOuxz3OUr6c3Ag0Y",
-  secret: "euWmLsgkf6czv9ih8mK50EHUlO5S8NbekDayd0dON2kY24RElC"
-});
-
-// first, remove configuration entry in case service is already configured
-Accounts.loginServiceConfiguration.remove({
-  service: "google"
-});
-Accounts.loginServiceConfiguration.insert({
-  service: "google",
-  clientId: "291832390597-iblfe4fqvmcl1qbsfttj7m04093848h1.apps.googleusercontent.com",
-  secret: "gDZUPq6XfLMC-RqjkbOT1jov"
-});
-  });
 }
 if (Meteor.isClient) {
   
@@ -178,22 +113,7 @@ Template.au.helpers({
   },
   tituloNav: "Invitar amigos"
 });
-  
-Meteor.methods({
-'removeFriend': function(selector){
-    Friends.remove(selector);
-    },
-'removeFriendCompletely': function(selector2){
-    Friends.remove(selector2);
-    }
-});
-}
 
-/**
-Start of maps
- */
-
-if (Meteor.isClient) {
   var MAP_ZOOM = 15;
 
 
@@ -244,4 +164,7 @@ if (Meteor.isClient) {
       }
     }
   });
+  
 }
+
+
