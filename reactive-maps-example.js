@@ -6,12 +6,7 @@ Meteor.startup(function(){
     if(Meteor.isServer) {
 Markers._ensureIndex({createdAt: 1}, {expireAfterSeconds: 60});
 }
-  if(Meteor.isClient) {
-      App.accessRule('*');
-App.accessRule('https://*.googleapis.com/*');
-App.accessRule('https://*.google.com/*');
-App.accessRule('https://*.gstatic.com/*');
-      
+  if(Meteor.isClient) {  
       console.log('hello');
     GoogleMaps.load({
     key: 'AIzaSyD81kt-LoD3_Vqyqhd1yw9YlHq8J3SHpEg'
