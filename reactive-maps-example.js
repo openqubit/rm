@@ -11,8 +11,6 @@ Markers._ensureIndex({createdAt: 1}, {expireAfterSeconds: 60});
     GoogleMaps.load({
     key: 'AIzaSyD81kt-LoD3_Vqyqhd1yw9YlHq8J3SHpEg'
     });
-      navigator.contacts.find();
-    console.log(navigator.contacts.find());
   }
 });
 
@@ -298,7 +296,8 @@ if (Meteor.isClient) {
 
       var markers = {};
 
-      Markers.find().observe({
+      Markers.
+      ().observe({
         added: function (document) {
           var icon;
               if(document.eventowner == '3'){
